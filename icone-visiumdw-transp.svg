@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" role="img" aria-label="VisiumDW">
+  
+  <g>
+  <path d="M 15.2 85.8 Q 62.0 94.3 96.0 118.1" fill="none" stroke="#19b5a5" stroke-width="5.1" stroke-linecap="round"/>
+  <path d="M 6.8 130.0 L 94.3 130.0" fill="none" stroke="#19b5a5" stroke-width="5.1" stroke-linecap="round"/>
+  <path d="M 15.2 174.2 Q 62.0 165.7 96.0 141.9" fill="none" stroke="#19b5a5" stroke-width="5.1" stroke-linecap="round"/>
+  <path d="M 36.5 68.8 Q 74.8 80.7 97.7 111.3" fill="none" stroke="#19b5a5" stroke-width="5.1" stroke-linecap="round" stroke-dasharray="10.2 7.6"/>
+  <path d="M 36.5 191.2 Q 74.8 179.3 97.7 148.7" fill="none" stroke="#19b5a5" stroke-width="5.1" stroke-linecap="round" stroke-dasharray="10.2 7.6"/>
+  <path d="M 53.5 130.0 Q 130.0 63.7 206.5 130.0" fill="none" stroke="#19b5a5" stroke-width="11.9" stroke-linecap="round"/>
+  <path d="M 53.5 130.0 Q 130.0 196.3 206.5 130.0" fill="none" stroke="#19b5a5" stroke-width="11.9" stroke-linecap="round"/>
+  <path d="M 99.4 114.7 L 99.4 145.3 A 30.6 11.0 0 0 0 160.6 145.3 L 160.6 114.7" fill="#19b5a5"/>
+  <ellipse cx="130.0" cy="114.7" rx="30.6" ry="11.0" fill="#19b5a5" stroke="#0f2b46" stroke-width="3.4"/>
+  <rect x="118.1" y="124.9" width="6.8" height="13.6" rx="1.3" fill="#0f2b46"/>
+  <rect x="126.6" y="119.8" width="6.8" height="18.7" rx="1.3" fill="#0f2b46"/>
+  <rect x="135.1" y="127.5" width="6.8" height="11.0" rx="1.3" fill="#0f2b46"/></g>
+</svg>

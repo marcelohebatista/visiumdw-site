@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VisiumDW — Data Warehouse e Dashboards implantados em semanas</title>
 <meta name="description" content="VisiumDW implanta seu data warehouse e dashboards de gestão em 2–4 semanas, rodando sozinhos todos os dias. 100% open source, seus dados nunca saem da sua empresa.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
 <style>
   :root{
     --azul:#0f2b46; --azul2:#16405f; --ciano:#19b5a5; --cinza:#5b6b7a;
@@ -19,6 +21,8 @@
   .logo span{color:var(--ciano)}
   nav a{color:#cfe0ee;text-decoration:none;margin-left:24px;font-size:.95rem}
   nav a:hover{color:#fff}
+  .logo-header{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-header .logo{font-size:1.35rem;font-weight:700;letter-spacing:.5px;color:#fff}
   .hero{background:linear-gradient(135deg,var(--azul) 0%,var(--azul2) 100%);color:#fff;padding:72px 0 64px}
   .hero h1{font-size:2.5rem;line-height:1.2;max-width:720px}
   .hero h1 em{color:var(--ciano);font-style:normal}
@@ -78,7 +82,10 @@
 
 <header>
   <div class="container">
-    <div class="logo">Visium<span>DW</span></div>
+    <a href="#" class="logo-header" aria-label="VisiumDW — início">
+      <img src="icone-visiumdw-transp.svg" alt="Logo VisiumDW" width="44" height="44">
+      <span class="logo">Visium<span>DW</span></span>
+    </a>
     <nav>
       <a href="#problema">Por quê</a>
       <a href="#solucao">Como funciona</a>
