@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisiumDW — Data Warehouse e Dashboards implantados em semanas</title>
+<meta name="description" content="VisiumDW implanta seu data warehouse e dashboards de gestão em 2–4 semanas, rodando sozinhos todos os dias. 100% open source, seus dados nunca saem da sua empresa.">
+<style>
+  :root{
+    --azul:#0f2b46; --azul2:#16405f; --ciano:#19b5a5; --cinza:#5b6b7a;
+    --fundo:#f7f9fb; --branco:#ffffff; --borda:#e3e9ef;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--azul);background:var(--fundo);line-height:1.6}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{background:var(--azul);color:#fff;padding:16px 0}
+  header .container{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-size:1.35rem;font-weight:700;letter-spacing:.5px}
+  .logo span{color:var(--ciano)}
+  nav a{color:#cfe0ee;text-decoration:none;margin-left:24px;font-size:.95rem}
+  nav a:hover{color:#fff}
+  .hero{background:linear-gradient(135deg,var(--azul) 0%,var(--azul2) 100%);color:#fff;padding:72px 0 64px}
+  .hero h1{font-size:2.5rem;line-height:1.2;max-width:720px}
+  .hero h1 em{color:var(--ciano);font-style:normal}
+  .hero p{margin:20px 0 32px;font-size:1.15rem;color:#d7e4ef;max-width:640px}
+  .btn{display:inline-block;padding:14px 28px;border-radius:8px;font-weight:600;text-decoration:none;font-size:1rem}
+  .btn-primario{background:var(--ciano);color:#06251f}
+  .btn-primario:hover{filter:brightness(1.08)}
+  .btn-sec{border:2px solid #4a6a86;color:#d7e4ef;margin-left:12px}
+  .btn-sec:hover{border-color:#fff;color:#fff}
+  .hero-ressalva{margin-top:22px;font-size:.92rem;color:#b9cddd}
+  .hero-ressalva a{color:var(--ciano)}
+  .selo{display:inline-block;background:rgba(25,181,165,.15);border:1px solid var(--ciano);color:var(--ciano);padding:6px 14px;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:20px}
+  section{padding:64px 0}
+  section h2{font-size:1.9rem;margin-bottom:16px}
+  section .sub{color:var(--cinza);max-width:680px;margin-bottom:36px;font-size:1.05rem}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{background:var(--branco);border:1px solid var(--borda);border-radius:12px;padding:26px}
+  .card h3{font-size:1.1rem;margin-bottom:10px}
+  .card p{color:var(--cinza);font-size:.95rem}
+  .card .icone{font-size:1.6rem;margin-bottom:12px;display:block}
+  .problema{background:var(--branco)}
+  .problema ul{list-style:none;margin-top:8px}
+  .problema li{padding:10px 0;border-bottom:1px solid var(--borda);color:var(--cinza)}
+  .problema li::before{content:"✕";color:#d64545;font-weight:700;margin-right:12px}
+  .solucao li::before{content:"✓"}
+  .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .stack span{background:#eef3f8;border:1px solid var(--borda);border-radius:6px;padding:6px 14px;font-size:.85rem;color:var(--azul2);font-weight:600}
+  .case{background:var(--azul);color:#fff}
+  .case h2{color:#fff}
+  .case .sub{color:#b9cddd}
+  .case .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+  .case .card p{color:#cfdce8}
+  .case .card h3{color:#fff}
+  .num{font-size:1.9rem;font-weight:700;color:var(--ciano)}
+  .oferta{background:var(--branco)}
+  .preco-card{border:2px solid var(--ciano);border-radius:12px;padding:32px;background:#fbfefe}
+  .preco-card .valor{font-size:2.4rem;font-weight:700;color:var(--azul)}
+  .preco-card .periodo{color:var(--cinza);font-size:.95rem}
+  .preco-card ul{list-style:none;margin:18px 0}
+  .preco-card li{padding:8px 0;border-bottom:1px dashed var(--borda);color:var(--cinza);font-size:.95rem}
+  .preco-card li::before{content:"✓";color:var(--ciano);font-weight:700;margin-right:10px}
+  .tag-mais{background:var(--ciano);color:#06251f;font-size:.75rem;font-weight:700;padding:4px 10px;border-radius:12px;vertical-align:middle;margin-left:8px}
+  .cta-final{background:linear-gradient(135deg,var(--azul2),var(--azul));color:#fff;text-align:center}
+  .cta-final h2{color:#fff}
+  .cta-final p{color:#cfdce8;margin:14px auto 30px;max-width:560px}
+  footer{background:var(--azul);color:#8fa8bd;padding:28px 0;font-size:.85rem;text-align:center}
+  footer a{color:#cfe0ee}
+  @media(max-width:860px){
+    .grid3,.grid2{grid-template-columns:1fr}
+    .hero h1{font-size:1.8rem}
+    nav{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">Visium<span>DW</span></div>
+    <nav>
+      <a href="#problema">Por quê</a>
+      <a href="#solucao">Como funciona</a>
+      <a href="#case">Case</a>
+      <a href="#oferta">Investimento</a>
+      <a href="#contato" class="btn btn-primario" style="padding:10px 20px;margin-left:16px">Agendar demo</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <span class="selo">Implantação em 2–4 semanas · 100% open source · Seus dados nunca saem da sua empresa</span>
+    <h1>Seu data warehouse implantado em semanas. <em>Rodando sozinho, todos os dias.</em></h1>
+    <p>O VisiumDW transforma os dados que seu ERP já exporta em painéis de decisão atualizados diariamente — com conciliação auditável até o último centavo. Sem licença por usuário, sem depender de TI para funcionar.</p>
+    <a href="#contato" class="btn btn-primario">Agendar demo de 15 min</a>
+    <a href="#solucao" class="btn btn-sec">Como funciona</a>
+    <p class="hero-ressalva">✔ 2–4 semanas quando os dados estão exportáveis e as perguntas de negócio estão definidas — <a href="#paraquem">veja os pré-requisitos</a>.</p>
+  </div>
+</div>
+
+<section id="problema" class="problema">
+  <div class="container">
+    <h2>Decidir no escuro custa caro</h2>
+    <p class="sub">Se a sua empresa é como a maioria das PMEs, esse cenário é familiar:</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>O que acontece hoje</h3>
+        <ul>
+          <li>Contas a pagar e a receber em planilhas de Excel, atualizadas à mão</li>
+          <li>O ERP exporta relatórios em CSV que ninguém analisa</li>
+          <li>Decisões por sentimento, não por número</li>
+          <li>Atrasos e inadimplência descobertos tarde demais</li>
+          <li>Quando chove, o dono pede "aquele relatório" e a TI trava</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Com o VisiumDW</h3>
+        <ul class="solucao">
+          <li>Painéis atualizados automaticamente todo dia, às 00h30</li>
+          <li>Carteira em aberto, aging de títulos e top fornecedores a um clique</li>
+          <li>Cada centavo conciliado entre o arquivo do ERP e o banco</li>
+          <li>Histórico completo auditável — nada se perde</li>
+          <li>Dono e gestores consultam sozinhos, sem pedir a ninguém</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="paraquem">
+  <div class="container">
+    <h2>Para quem o VisiumDW funciona de verdade</h2>
+    <p class="sub">Somos diretos: a implantação em semanas exige três pré-requisitos. Existindo, entregamos rápido. Não existindo, a gente te diz antes de te vender.</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="icone">📦</span>
+        <h3>Seu ERP exporta dados</h3>
+        <p>Relatórios em CSV ou Excel, exportáveis de forma recorrente (diária ou semanal). Não precisa ser bonito: arquivo bruto serve — é exatamente o que o ETL consome.</p>
+      </div>
+      <div class="card">
+        <span class="icone">🎯</span>
+        <h3>Você sabe as perguntas</h3>
+        <p>Quais números você quer ver todo dia? Carteira em aberto? Títulos vencidos por faixa? Fluxo mês a mês? Quem responde isso é você, dono do problema — nós transformamos em painéis.</p>
+      </div>
+      <div class="card">
+        <span class="icone">👤</span>
+        <h3>Uma pessoa do seu lado</h3>
+        <p>Alguém da sua equipe com ~2h por semana durante a implantação, para validar nomes, regras e números. Sem isso, o relógio para esperando resposta.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px;border-left:4px solid var(--ciano)">
+      <p><strong>Não tem os três? Sem problema.</strong> Começamos pelo diagnóstico gratuito de 1h: mapeamos o que existe e dizemos com honestidade se vale começar agora ou preparar o terreno primeiro.</p>
+    </div>
+  </div>
+</section>
+
+<section id="solucao">
+  <div class="container">
+    <h2>Uma arquitetura de engenharia, não um projeto artesanal</h2>
+    <p class="sub">O mesmo blueprint testado em produção em uma indústria real, replicado em semanas no seu servidor — on-premises ou na nuvem que você escolher.</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="icone">🗄️</span>
+        <h3>Data Warehouse modelado</h3>
+        <p>Modelo estrela em PostgreSQL com dimensões, fatos e views de negócio em português. Staging separado da produção, idempotência total: reexecutar nunca duplica nem corrompe.</p>
+      </div>
+      <div class="card">
+        <span class="icone">⚙️</span>
+        <h3>ETL diário automatizado</h3>
+        <p>Pipeline Python agendado que lê o CSV do seu ERP, valida qualidade (data quality gate), grava atomicamente e registra cada execução em tabela de auditoria.</p>
+      </div>
+      <div class="card">
+        <span class="icone">📊</span>
+        <h3>Dashboards prontos</h3>
+        <p>Metabase com os 7 painéis de gestão: carteira em aberto, recebimentos, pagamentos, fluxo mensal, top 10 parceiros, aging de títulos e detalhamento completo.</p>
+      </div>
+      <div class="card">
+        <span class="icone">⚖️</span>
+        <h3>Conciliação até o centavo</h3>
+        <p>Porteira financeira: se a soma do arquivo divergir do banco, a carga é barrada. Nenhum dado incompleto chega aos seus painéis.</p>
+      </div>
+      <div class="card">
+        <span class="icone">🔓</span>
+        <h3>Custo zero de licença</h3>
+        <p>PostgreSQL, Metabase, Python e Docker — 100% open source. Sem assinatura por usuário: quantas pessoas precisarem, usam.</p>
+      </div>
+      <div class="card">
+        <span class="icone">🏢</span>
+        <h3>Seus dados, seu servidor</h3>
+        <p>Tudo roda dentro da sua empresa. Nenhum dado sai para a nuvem de terceiros. Auditoria e controle ficam com você.</p>
+      </div>
+    </div>
+    <div class="stack">
+      <span>PostgreSQL 16</span><span>Metabase</span><span>Python + APScheduler</span><span>Docker</span><span>Jupyter Lab</span><span>CloudBeaver</span>
+    </div>
+  </div>
+</section>
+
+<section id="case" class="case">
+  <div class="container">
+    <h2>Provado em produção, não no papel</h2>
+    <p class="sub">A arquitetura VisiumDW nasceu de uma implantação real em indústria, operando diariamente desde 2025.</p>
+    <div class="grid3">
+      <div class="card">
+        <div class="num">00h30</div>
+        <p>Todo dia, o ETL roda sozinho: lê, valida, concilia e carrega — sem intervenção humana.</p>
+      </div>
+      <div class="card">
+        <div class="num">R$ 0</div>
+        <p>de licença por usuário. O custo de software é zero; o que você paga é pela implantação e operação.</p>
+      </div>
+      <div class="card">
+        <div class="num">100%</div>
+        <p>das cargas conciliadas centavo a centavo, com histórico de auditoria permanente no banco.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="oferta" class="oferta">
+  <div class="container">
+    <h2>Investimento transparente</h2>
+    <p class="sub">Preço fechado, escopo fechado. Sem surpresa de hora extra.</p>
+    <div class="grid2">
+      <div class="preco-card">
+        <h3>Implantação VisiumDW</h3>
+        <div class="valor">R$ 12.500</div>
+        <div class="periodo">pagamento único · 2–4 semanas a partir do recebimento dos dados de exemplo · faixa negociável R$ 10–15 mil conforme escopo</div>
+        <ul>
+          <li>Arquitetura completa no seu servidor (on-premises ou nuvem)</li>
+          <li>Mapeamento do CSV do seu ERP e primeira carga validada</li>
+          <li>Modelo estrela + views de negócio em português</li>
+          <li>Os 7 dashboards de gestão prontos no Metabase</li>
+          <li>Conciliação financeira + tabela de auditoria</li>
+          <li>Treinamento da equipe (2h) e documentação</li>
+        </ul>
+        <a href="#contato" class="btn btn-primario">Quero implantar</a>
+      </div>
+      <div class="preco-card">
+        <h3>Operação assistida <span class="tag-mais">recorrente</span></h3>
+        <div class="valor">R$ 990<span style="font-size:1.1rem;font-weight:400">/mês</span></div>
+        <div class="periodo">opcional, mas recomendada — é o que mantém tudo rodando</div>
+        <ul>
+          <li>Monitoria do ETL diário e da conciliação</li>
+          <li>Ajustes e novos filtros nos dashboards</li>
+          <li>1 dashboard novo por mês incluído</li>
+          <li>Backup, restore e atualizações de segurança</li>
+          <li>Suporte em horário comercial</li>
+        </ul>
+        <a href="#contato" class="btn btn-sec">Tirar dúvidas</a>
+      </div>
+    </div>
+    <p style="margin-top:24px;color:var(--cinza);font-size:.9rem">Extras: dashboard adicional R$ 450–800 · nova área de negócio (estoque, fiscal) R$ 2.500–5.000 · piloto para contadores: R$ 2.500/30 dias (1 empresa, abate na implantação).</p>
+  </div>
+</section>
+
+<section id="contato" class="cta-final">
+  <div class="container">
+    <h2>Veja seus dados virarem decisão em 15 minutos</h2>
+    <p>Demo com dados fictícios, sem compromisso: você vê exatamente o painel que a sua empresa vai ter. Se gostar, fazemos o diagnóstico gratuito e a proposta.</p>
+    <a href="https://wa.me/5551984368247?text=Ol%C3%A1!%20Quero%20agendar%20a%20demo%20de%2015%20min%20do%20VisiumDW" class="btn btn-primario">Agendar demo de 15 min</a>
+    <p style="margin-top:18px;font-size:.9rem">ou chame no WhatsApp: <strong><a href="https://wa.me/5551984368247" style="color:#fff">(51) 98436-8247</a></strong> · e-mail: <strong>contato@visiumdw.com.br</strong></p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    VisiumDW · Data Warehouse &amp; Business Intelligence para PMEs · Gravataí/RS · <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
