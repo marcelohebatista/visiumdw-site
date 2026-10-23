@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VisiumDW — Data Warehouse e Dashboards implantados em semanas</title>
 <meta name="description" content="VisiumDW implanta seu data warehouse e dashboards de gestão em 2–4 semanas, rodando sozinhos todos os dias. 100% open source, seus dados nunca saem da sua empresa.">
+<link rel="canonical" href="https://www.visiumdw.com.br/">
+<meta name="robots" content="index, follow">
+<!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.visiumdw.com.br/">
+<meta property="og:title" content="VisiumDW — Data Warehouse e Dashboards implantados em semanas">
+<meta property="og:description" content="Seu ERP já exporta os dados. O VisiumDW transforma em painéis de decisão atualizados diariamente, com conciliação auditável até o último centavo.">
+<meta property="og:image" content="https://www.visiumdw.com.br/og-image.png">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VisiumDW — Data Warehouse e Dashboards implantados em semanas">
+<meta name="twitter:description" content="Painéis de gestão atualizados diariamente, conciliados até o último centavo. 100% open source, seus dados nunca saem da sua empresa.">
+<meta name="twitter:image" content="https://www.visiumdw.com.br/og-image.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180.png">
 <style>
@@ -13,6 +26,8 @@
     --fundo:#f7f9fb; --branco:#ffffff; --borda:#e3e9ef;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  img{max-width:100%;height:auto}
   body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--azul);background:var(--fundo);line-height:1.6}
   .container{max-width:1080px;margin:0 auto;padding:0 24px}
   header{background:var(--azul);color:#fff;padding:16px 0}
@@ -22,7 +37,9 @@
   nav a{color:#cfe0ee;text-decoration:none;margin-left:24px;font-size:.95rem}
   nav a:hover{color:#fff}
   .logo-header{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo-bloco{display:flex;flex-direction:column;line-height:1.25}
   .logo-header .logo{font-size:1.35rem;font-weight:700;letter-spacing:.5px;color:#fff}
+  .tagline{font-size:.72rem;color:#9db4c8;letter-spacing:.4px;white-space:nowrap}
   .hero{background:linear-gradient(135deg,var(--azul) 0%,var(--azul2) 100%);color:#fff;padding:72px 0 64px}
   .hero h1{font-size:2.5rem;line-height:1.2;max-width:720px}
   .hero h1 em{color:var(--ciano);font-style:normal}
@@ -71,12 +88,64 @@
   .cta-final p{color:#cfdce8;margin:14px auto 30px;max-width:560px}
   footer{background:var(--azul);color:#8fa8bd;padding:28px 0;font-size:.85rem;text-align:center}
   footer a{color:#cfe0ee}
+
+  /* ---------- RESPONSIVO ---------- */
+  @media(max-width:1024px){
+    .hero h1{font-size:2.1rem}
+    section h2{font-size:1.7rem}
+  }
   @media(max-width:860px){
     .grid3,.grid2{grid-template-columns:1fr}
-    .hero h1{font-size:1.8rem}
+    section{padding:48px 0}
+    /* menu mobile: só o CTA fica no header */
     nav{display:none}
+    .nav-cta{display:inline-block !important}
+    .hero{padding:56px 0 48px}
+    .hero h1{font-size:1.75rem}
+    .hero p{font-size:1.05rem}
+    .btn{display:block;width:100%;max-width:340px;margin:0 auto;text-align:center}
+    .btn-sec{margin:12px auto 0}
+    .hero-ressalva{font-size:.85rem}
+    .preco-card{padding:24px}
+    .preco-card .valor{font-size:2rem}
+    .cta-final h2{font-size:1.6rem}
+    .logo-header .logo{font-size:1.15rem}
+    .logo-header img{width:36px;height:36px}
+    .tagline{display:none}
+  }
+  @media(max-width:480px){
+    .hero h1{font-size:1.5rem}
+    section h2{font-size:1.45rem}
+    .container{padding:0 18px}
+    .card{padding:20px}
+    .num{font-size:1.6rem}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "VisiumDW",
+  "url": "https://www.visiumdw.com.br/",
+  "logo": "https://www.visiumdw.com.br/icone-visiumdw-transp.svg",
+  "image": "https://www.visiumdw.com.br/og-image.png",
+  "description": "Implantação de Data Warehouse e dashboards de BI para PMEs em 2–4 semanas. PostgreSQL, Metabase, ETL Python — 100% open source, dados no servidor do cliente.",
+  "email": "contato@visiumdw.com.br",
+  "telephone": "+55-51-98436-8247",
+  "areaServed": "Brasil",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Gravataí",
+    "addressRegion": "RS",
+    "addressCountry": "BR"
+  },
+  "priceRange": "R$ 2.500 - R$ 12.500",
+  "founder": {
+    "@type": "Person",
+    "name": "Marcelo Batista"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -84,14 +153,17 @@
   <div class="container">
     <a href="#" class="logo-header" aria-label="VisiumDW — início">
       <img src="icone-visiumdw-transp.svg" alt="Logo VisiumDW" width="44" height="44">
-      <span class="logo">Visium<span>DW</span></span>
+      <span class="logo-bloco">
+        <span class="logo">Visium<span>DW</span></span>
+        <span class="tagline">Empresa especializada em Data Warehouse &amp; BI</span>
+      </span>
     </a>
     <nav>
       <a href="#problema">Por quê</a>
       <a href="#solucao">Como funciona</a>
       <a href="#case">Case</a>
       <a href="#oferta">Investimento</a>
-      <a href="#contato" class="btn btn-primario" style="padding:10px 20px;margin-left:16px">Agendar demo</a>
+      <a href="#contato" class="btn btn-primario nav-cta" style="padding:10px 20px;margin-left:16px">Agendar demo</a>
     </nav>
   </div>
 </header>
@@ -273,6 +345,9 @@
 </section>
 
 <footer>
+  <div class="container">
+    VisiumDW · Data Warehouse &amp; Business Intelligence para PMEs · Gravataí/RS · <a href="#">LinkedIn</a>
+  </div>
 </footer>
 
 </body>
